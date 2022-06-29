@@ -29,10 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newlamp.R
-import com.example.newlamp.ui.theme.DarkButton
-import com.example.newlamp.ui.theme.NewLampTheme
-import com.example.newlamp.ui.theme.Purple200
-import com.example.newlamp.ui.theme.Teal200
+import com.example.newlamp.services.LEDServerService
+import com.example.newlamp.ui.theme.*
 import com.example.newlamp.uiElements.VerticalSlider
 import kotlin.math.roundToInt
 
@@ -43,9 +41,19 @@ fun PaletteScreen(navController: NavController) {
         Row(
             modifier = Modifier.align(Alignment.Center)
         ) {
-            VerticalSlider(Color.Red){}
-            VerticalSlider(Color.Green){}
-            VerticalSlider(Color.Blue){}
+            var red = 0; var green = 0; var blue = 0
+            VerticalSlider("R", LedRed){
+                red = it
+                LEDServerService.postRGB(red, green, blue)
+            }
+            VerticalSlider("G", LedGreen){
+                green = it
+                LEDServerService.postRGB(red, green, blue)
+            }
+            VerticalSlider("B", LedBlue){
+                blue = it
+                LEDServerService.postRGB(red, green, blue)
+            }
         }
         // Button new preset
         Box(
