@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -17,7 +18,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.newlamp.R
+import androidx.navigation.compose.rememberNavController
+import com.example.newlamp.ui.theme.ColorBottomNavigationBackground
+import com.example.newlamp.ui.theme.ColorInactive
+import com.example.newlamp.ui.theme.Teal200
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -43,7 +47,7 @@ fun BottomNavigation(navController: NavController) {
     )
 
     androidx.compose.material.BottomNavigation(
-        backgroundColor = colorResource(id = R.color.teal_200),
+        backgroundColor = ColorBottomNavigationBackground,
         contentColor = Color.Black
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -51,10 +55,12 @@ fun BottomNavigation(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
-                label = { Text(text = item.title,
-                    fontSize = 9.sp) },
-                selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Black.copy(0.4f),
+                label = { Text(
+                    text = item.title,
+                    fontSize = 11.sp
+                ) },
+                selectedContentColor = Teal200,
+                unselectedContentColor = ColorInactive,
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screen_route,
                 onClick = {
@@ -72,4 +78,10 @@ fun BottomNavigation(navController: NavController) {
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewBottomNavigation() {
+    BottomNavigation(navController = rememberNavController())
 }

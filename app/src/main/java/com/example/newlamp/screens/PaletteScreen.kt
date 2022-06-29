@@ -60,7 +60,7 @@ fun PaletteScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp)
-                .background(DarkButton)
+                .background(ColorDarkButton)
                 .align(Alignment.BottomCenter)
                 .clickable(true, onClick = {
                     Log.d("DEBUG", "Clicked")
