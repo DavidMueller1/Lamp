@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.example.newlamp.screens.PaletteScreen
+import com.example.newlamp.screens.PresetsScreen
 
 @Composable
 fun PagePaletteScreen(navController: NavController) {
@@ -12,10 +13,7 @@ fun PagePaletteScreen(navController: NavController) {
 
 @Composable
 fun PagePresetsScreen(navController: NavController) {
-//    PaletteScreen(navController = navController)
-    Text(
-        text = "Presets"
-    )
+    PresetsScreen(navController = navController)
 }
 
 @Composable

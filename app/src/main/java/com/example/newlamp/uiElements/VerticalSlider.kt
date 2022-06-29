@@ -30,7 +30,7 @@ fun VerticalSlider(
         ColorfulIconSlider(
             value = sliderPosition,
             onValueChange = { value, _ -> sliderPosition = value },
-            onValueChangeFinished = { changeAction((sliderPosition * 256).toInt()) },
+            onValueChangeFinished = { changeAction((sliderPosition * 255).toInt()) },
             valueRange = 0f..1f,
             trackHeight = trackHeight.dp,
             colors = MaterialSliderDefaults.defaultColors(
